@@ -1,4 +1,4 @@
-area_value_label_dict = {
+level_value_label_dict = {
     0: 'C-Suite',
     1: 'VP',
     2: 'Director',
@@ -6,7 +6,7 @@ area_value_label_dict = {
     4: 'Other'
 }
 
-area_label_value_dict = {
+level_label_value_dict = {
     'C-Suite': 0,
     'VP': 1,
     'Director': 2,
