@@ -41,21 +41,17 @@ with open('mlp.pkl', 'wb') as mlpfile:
 # Classify 1000 new examples
 with open('example_titles.csv') as f:
     lines = f.readlines()
-    lines_without_n = [line.split('\n')[0] for line in lines][1001:2501]
+    lines_without_n = [line.split('\n')[0] for line in lines][1001:2001]
     normalized_s = [normalize_sentence(l1) for l1 in lines_without_n]
 
     X_counts = count_vect.transform(normalized_s)
     X_tfidf = tfidf_transformer.transform(X_counts)
     y_result = clf.predict(X_tfidf)
 
-    with open('sabelo.py', 'w') as file:
-        file.write('test_titles_list = ')
-        simplejson.dump(normalized_s, file)
-        file.write('\n')
-        lista = []
-        for i in range(1500):
-            lista.append(area_value_label_dict[y_result[i]])
-        file.write('classified_list = ')
-        simplejson.dump(lista, file)
-        file.write('\n')
+    with open('examples_results_mlp.tsv', 'w') as file:
+        for i in range(1000):
+            file.write(lines_without_n[i])
+            file.write("\t")
+            file.write(area_value_label_dict[y_result[i]])
+            file.write("\n")
         file.close()
