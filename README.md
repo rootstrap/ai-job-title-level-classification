@@ -12,7 +12,7 @@ Two algorithms are studied:
 * [Stochastic gradient descent (SGD)](https://en.wikipedia.org/wiki/Stochastic_gradient_descent)
 * [Multi-layer Perceptron (MLP)](https://en.wikipedia.org/wiki/Multilayer_perceptron)
 
-There is an analogous project but it classifies according to the level of the position: [Classification of job positions by area](https://github.com/rootstrap/ai-job-title-area-classification).
+There is an analogous project but it classifies according to the level of the position: [Classification of job positions by area](https://github.com/rootstrap/ai-job-title-area-classification). If you use pip and virtual environments, you can install easily the named library: `$pip install -r requirements.txt`.
 
 
 ## Implementation
