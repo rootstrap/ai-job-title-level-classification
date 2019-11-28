@@ -25,7 +25,7 @@ To see the explanation of the training of the classifiers, and the general proce
 The steps are the same as the classification by area:
 1. Run `data_process/tsv_file_to_list.py` to transform the table into lists.
 2. Run `data_process/normalize_list.py` to normalize the list, and transform the labels into integers.
-3. Run `tuning_mlp_classifier.py` and `tuning_sgd_classifier.py` to find the best params for each algorithm.
+3. Run `tuning_mlp_classifier.py` and `tuning_sgd_classifier.py` to find the best params for each algorithm (it may take a while, a few hours in the case of mlp).
 4. Run `mlp_classifier.py` and `sgd_classifier.py` to fit the classifiers, run the tests, and store the results of the classification of new data, to see how it works. Finally, each classifier is dumped using pickle, in a file with its corresponding name. To load the instance, you can execute:  
 ```
 with open('sgd.pkl', 'rb') as sgdfile:
