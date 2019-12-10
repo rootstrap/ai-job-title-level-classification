@@ -1,8 +1,9 @@
-venv-*
+venv-level-clf/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
+*.pyc
 
 # C extensions
 *.so
@@ -128,3 +129,5 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+.DS_Store
