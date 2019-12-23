@@ -8,25 +8,18 @@ This is a project to classify job positions using machine learning, more specifi
 
 
 In the example, `CEO and Founder` would return `C-Suite`.
-Two classifiers are studied:  
-* [Stochastic gradient descent (SGD)](https://en.wikipedia.org/wiki/Stochastic_gradient_descent)
-* [Multi-layer Perceptron (MLP)](https://en.wikipedia.org/wiki/Multilayer_perceptron)
 
 There is an analogous project but it classifies according to the area of the position: [Classification of job positions by area](https://github.com/rootstrap/ai-job-title-area-classification). If you use pip and virtual environments, you can install easily the named library: `$pip install -r requirements.txt`.
 
 
-## Implementation
-This project is programed using the [Python language](https://www.python.org). The trained classifiers are implemented in the [Scikit Learn library](https://scikit-learn.org), a set of tools for machine learning in Python.
-
-## Fitting, Tuning, and general process
-To see the explanation of the training and tuning of the classifiers, and the general process, take a look at the [documentation of the classification of job positions by area](https://github.com/rootstrap/ai-job-title-area-classification). The processes are the same.
+## Content
+You can see the explanation in the area classifier documentation.
 
 ## Script execution
-The steps are the same as the classification by area:
-1. Run `data_process/tsv_file_to_list.py` to transform the table into lists.
-2. Run `data_process/normalize_list.py` to normalize the list, and transform the labels into integers.
-3. Run `<clf name>_fit_tune_classifier.py` to fit and tune the classifier. `fit` is to learn and fit the model to the train set, and `tune` is to search for the optimal combination of the hyperparams, the ones that achieves better results(tuning may take a while).
-4. Run `<clf name>_test_classifier.py` to test the trained classifiers and show the results. Besides, a classified example set is stored in `test_data/<clf name>_results.tsv`.
+The steps are the same as the classification by level:
+1. Run `data_process/tsv_file_to_dataframe.py` to extract the data from the tsv file and split the dataset.
+2. Run `<clf name>_fit_tune_classifier.py` to fit and tune the classifier. `fit` is to learn and fit the model to the train set, and `tune` is to search for the optimal combination of the hyperparams, the ones that achieves better results(tuning may take a while).
+3. Run `<clf name>_test_classifier.py` to test the trained classifiers and show the results. Besides, a classified example set is stored in `test_data/<clf name>_results.tsv`.
 
 Note: `<clf name>` can be `mlp` or `sgd`, depending on the classifier.
 
