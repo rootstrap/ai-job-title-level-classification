@@ -13,8 +13,8 @@ positions_categories = pd.Categorical(data["Classification"])
 X_train, X_test, y_train, y_test = train_test_split(
     data["Position"],
     positions_categories.codes,
-    train_size=0.85#,
-    #stratify=positions_categories.codes
+    train_size=0.85,
+    stratify=positions_categories.codes
 )
 
 X_train = [normalize_sentence(x) for x in X_train]

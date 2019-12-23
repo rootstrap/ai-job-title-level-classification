@@ -1,12 +1,14 @@
+
+import pickle
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfTransformer
 from sklearn.pipeline import Pipeline
 from sklearn.neural_network import MLPClassifier
 from sklearn.model_selection import GridSearchCV
 
-from train_and_test_definition import X_train
 from fit_tune_function import fit_tune_store_sgdcv
 
+X_train = pickle.load(open('data_process/data_sets/x_train.pkl', 'rb'))
 len_n = len(X_train)
 
 text_clf = Pipeline([
