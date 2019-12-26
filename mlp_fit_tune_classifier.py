@@ -9,20 +9,26 @@ from sklearn.model_selection import GridSearchCV
 from fit_tune_function import fit_tune_store_sgdcv
 
 X_train = pickle.load(open('data_process/data_sets/x_train.pkl', 'rb'))
-len_n = len(X_train)
+count_vect = CountVectorizer()
+X_train_counts = count_vect.fit_transform(X_train)
+tf_transformer = TfidfTransformer(use_idf=False).fit_transform(X_train_counts)
+len_n = tf_transformer.shape[1]
+
 
 text_clf = Pipeline([
     ('vect', CountVectorizer()),
     ('tfidf', TfidfTransformer()),
-    ('clf', MLPClassifier(solver='lbfgs', alpha=1e-5, hidden_layer_sizes=(15,), random_state=1)),
+    ('clf', MLPClassifier()),
 ])
 
 parameters = {
-    'vect__ngram_range': [(1, 1), ],
+    'vect__ngram_range': [(1, 1), (1, 2), (2, 3), ],
     'tfidf__use_idf': (True, False),
-    'clf__random_state': (1, 21, 33, 42, 88, 160, ),
+    'clf__random_state': (1, ),
     'clf__alpha': (1e-2, 1e-3, 1e-4, 0.1, 1e-5, ),
-    'clf__hidden_layer_sizes': [(1, ), (3, ), (len_n, ), (int(len_n/2), int(len_n/2)), ]
+    'clf__hidden_layer_sizes': [(int(len_n/2), ), (int((len_n + 4)*(2/3)), ), (int(len_n/2), int(len_n/4))],
+    'clf__solver': ['sgd', 'adam', 'lbfgs'],
+    'clf__learning_rate': ['constant', 'adaptive'],
 }
 
 mlp_clf_gscv = GridSearchCV(text_clf, parameters, cv=5, iid=False, n_jobs=-1)
